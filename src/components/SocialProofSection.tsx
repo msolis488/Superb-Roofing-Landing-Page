@@ -28,32 +28,31 @@ interface Props {
 
 const defaultReviews: Review[] = [
   {
-    name: "John Smith",
+    name: "Anthony Holguin",
     rating: 5,
-    comment:
-      "Best roofing service I've ever used. The team was professional and completed the job ahead of schedule.",
-    date: "2024-02-15",
+    comment: "Amazing service! Josh and Zach were great to work with!!",
+    date: "2025-02-15",
   },
   {
-    name: "Sarah Johnson",
+    name: "Danny Rodriguez",
     rating: 5,
     comment:
-      "Incredible work! They transformed our old roof into something beautiful. The $1,000 discount was a great bonus.",
-    date: "2024-02-10",
+      "Can't say enough good things about Superb Roofing. I had a leak that was causing interior drywall damage that I needed fixed ASAP. I usually handle house projects on my own, but once I took some shingles off and exposed the wet, rotting decking below, I knew I had bit off more than I could chew.",
+    date: "2025-02-10",
   },
   {
-    name: "Mike Williams",
+    name: "Heather Carver",
     rating: 5,
     comment:
-      "Very impressed with the quality of work. The team was courteous and cleaned up everything perfectly.",
-    date: "2024-02-05",
+      "Superb Roofing & Restoration had no hesitation about completing a small repair to our roof. The roofer was very professional, friendly and efficient. We will definitely be using them for any roofing issues in the future.",
+    date: "2025-02-05",
   },
   {
-    name: "Emily Davis",
+    name: "Lindsay O'Connor",
     rating: 5,
     comment:
-      "They made the whole process so easy. From quote to completion, everything was handled professionally.",
-    date: "2024-01-30",
+      "Honestly I called 7 different companies and only one came in with a price close to theirs but still more. They came over the next day after I called them at 6:30 at night. Amazing!",
+    date: "2025-01-30",
   },
 ];
 

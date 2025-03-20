@@ -31,16 +31,6 @@ const HeroSection = ({
       {/* Content Container */}
       <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center text-white space-y-6">
         <CountdownBanner />
-        {/* Mobile Call Button - Only visible on mobile */}
-        <Button
-          variant="secondary"
-          size="lg"
-          className="md:hidden fixed top-4 right-4 z-50 rounded-full"
-          onClick={onCallClick}
-        >
-          <Phone className="mr-2 h-5 w-5" />
-          Call Now
-        </Button>
 
         {/* CTA Card */}
         <Card className="w-full max-w-md p-4 md:p-6 bg-white/10 backdrop-blur-md border-0 text-white mx-2 md:mx-0">
@@ -66,7 +56,7 @@ const HeroSection = ({
             <Button
               variant="outline"
               size="lg"
-              className="w-full hidden md:flex bg-slate-800 hover:bg-slate-700 text-white"
+              className="w-full flex bg-slate-800 hover:bg-slate-700 text-white"
               onClick={onCallClick}
             >
               <Phone className="mr-2 h-5 w-5" />

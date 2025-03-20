@@ -16,37 +16,37 @@ interface Props {
 const defaultImages: GalleryImage[] = [
   {
     id: "1",
-    src: "/src/assets/expert-installation_.webp",
+    src: "https://i.ibb.co/0yhGW7Wn/expert-installation.webp",
     alt: "Modern roof installation",
     description: "Complete roof replacement with architectural shingles",
   },
   {
     id: "2",
-    src: "/src/assets/expert-residential-roofing-services.webp",
+    src: "https://i.ibb.co/xqtVYtBy/expert-residential-roofing-services.webp",
     alt: "Classic home roof",
     description: "Traditional asphalt shingle installation",
   },
   {
     id: "3",
-    src: "/src/assets/residential-roof-installation-services.webp",
+    src: "https://i.ibb.co/N20X3kg7/residential-roof-installation-services.webp",
     alt: "Luxury home roofing",
     description: "Premium slate roofing project",
   },
   {
     id: "4",
-    src: "/src/assets/Shingle1.webp",
+    src: "https://i.ibb.co/cVnv9r9/Shingle1.webp",
     alt: "Luxury home roofing",
     description: "Premium slate roofing project",
   },
   {
     id: "5",
-    src: "/src/assets/superb-roofing-and-renovation-doing-whole-roof-repair.webp",
+    src: "https://i.ibb.co/LXYpRJL8/superb-roofing-and-renovation-doing-whole-roof-repair.webp",
     alt: "Luxury home roofing",
     description: "Premium slate roofing project",
   },
   {
     id: "6",
-    src: "/src/assets/superb-roofing-solar-panel-roof-intallation-12.webp",
+    src: "https://i.ibb.co/Gv2vVYTS/superb-roofing-solar-panel-roof-intallation-12.webp",
     alt: "Luxury home roofing",
     description: "Premium slate roofing project",
   },

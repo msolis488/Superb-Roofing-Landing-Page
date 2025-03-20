@@ -5,7 +5,7 @@ import HeroSection from "./HeroSection";
 import SocialProofSection from "./SocialProofSection";
 import PortfolioGallery from "./PortfolioGallery";
 import GuaranteesSection from "./GuaranteesSection";
-import LeadForm from "./LeadForm";
+import QuizForm from "./QuizForm";
 
 export default function Home() {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -15,22 +15,26 @@ export default function Home() {
   };
 
   const handleCallClick = () => {
-    window.location.href = "tel:5551234567";
+    window.location.href = "tel:+2108718293";
   };
 
   const handleFormSubmit = (data: any) => {
     console.log("Form submitted:", data);
-    setIsFormOpen(false);
+    // Here you would typically send this data to your backend
+    alert("Message Sent! We'll contact you shortly about your roof.");
   };
 
   return (
     <div className="min-h-screen bg-white">
-      <Header logoUrl="/src/assets/logo.png" companyName="Your Company Name" />
+      <Header
+        logoUrl="https://i.ibb.co/wrMYx8Vb/logo.png"
+        companyName="Your Company Name"
+      />
 
       {/* Add padding top to account for fixed header */}
       <div className="pt-24 md:pt-32">
         <HeroSection
-          backgroundImage="/src/assets/hero-image.jpg"
+          backgroundImage="https://i.ibb.co/zMcWpf1/hero-image.jpg"
           onGetQuoteClick={handleGetQuoteClick}
           onCallClick={handleCallClick}
         />
@@ -39,7 +43,7 @@ export default function Home() {
         <GuaranteesSection />
         <PortfolioGallery />
 
-        <LeadForm
+        <QuizForm
           open={isFormOpen}
           onOpenChange={setIsFormOpen}
           onSubmit={handleFormSubmit}

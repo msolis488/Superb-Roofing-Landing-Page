@@ -1,5 +1,10 @@
 import React from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -17,8 +22,10 @@ import {
 
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
   phone: z.string().min(10, "Please enter a valid phone number"),
   address: z.string().min(5, "Please enter a valid address"),
+  message: z.string().optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -38,101 +45,164 @@ export default function LeadForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
+      email: "",
       phone: "",
       address: "",
+      message: "",
     },
   });
 
+  const [showSuccess, setShowSuccess] = React.useState(false);
+
   const handleSubmit = (data: FormData) => {
     onSubmit?.(data);
-    // Show success message or handle submission
-    console.log("Form submitted:", data);
+    form.reset();
+    setShowSuccess(true);
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[600px] bg-white">
-        <DialogHeader>
-          <DialogTitle className="text-2xl font-bold text-center text-gray-900">
-            Get Your $1,000 Discount
-          </DialogTitle>
-        </DialogHeader>
+        {showSuccess ? (
+          <div className="py-8 text-center">
+            <h3 className="text-2xl font-bold text-green-600 mb-4">
+              Thank You!
+            </h3>
+            <p className="text-gray-600 mb-6">
+              We'll be in touch with your quote shortly.
+            </p>
+            <Button
+              onClick={() => {
+                setShowSuccess(false);
+                onOpenChange?.(false);
+              }}
+              className="bg-blue-900 hover:bg-blue-800 text-white"
+            >
+              Close
+            </Button>
+          </div>
+        ) : (
+          <>
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-bold text-center text-gray-900">
+                Get Your $1,000 Discount
+              </DialogTitle>
+            </DialogHeader>
 
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(handleSubmit)}
-            className="space-y-6 py-4"
-          >
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Full Name</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="John Doe"
-                      {...field}
-                      className="bg-gray-50"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="phone"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Phone Number</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="(555) 555-5555"
-                      {...field}
-                      className="bg-gray-50"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="address"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Address</FormLabel>
-                  <FormControl>
-                    <Input
-                      placeholder="123 Main St, City, State"
-                      {...field}
-                      className="bg-gray-50"
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <div className="flex justify-center pt-4">
-              <Button
-                type="submit"
-                className="w-full max-w-sm bg-blue-900 hover:bg-blue-800 text-white"
-                size="lg"
+            <Form {...form}>
+              <form
+                onSubmit={form.handleSubmit(handleSubmit)}
+                className="space-y-6 py-4"
               >
-                Get My Quote
-              </Button>
-            </div>
-          </form>
-        </Form>
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Full Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="John Doe"
+                          {...field}
+                          className="bg-gray-50"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-        <div className="text-center text-sm text-gray-500 mt-4">
-          By submitting this form, you agree to be contacted about roofing
-          services.
-        </div>
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="john@example.com"
+                          type="email"
+                          {...field}
+                          className="bg-gray-50"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Phone Number</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="(555) 555-5555"
+                          {...field}
+                          className="bg-gray-50"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="address"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Address</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="123 Main St, City, State"
+                          {...field}
+                          className="bg-gray-50"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Tell us about your roof</FormLabel>
+                      <FormControl>
+                        <textarea
+                          {...field}
+                          className="w-full min-h-[100px] p-3 rounded-md border bg-gray-50"
+                          placeholder="Please describe any specific issues or concerns about your roof..."
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                <div className="flex justify-center pt-4">
+                  <Button
+                    type="submit"
+                    className="w-full max-w-sm bg-blue-900 hover:bg-blue-800 text-white"
+                    size="lg"
+                  >
+                    Get My Quote
+                  </Button>
+                </div>
+              </form>
+            </Form>
+
+            <div className="text-center text-sm text-gray-500 mt-4">
+              By submitting this form, you agree to be contacted about roofing
+              services.
+            </div>
+          </>
+        )}
       </DialogContent>
     </Dialog>
   );
