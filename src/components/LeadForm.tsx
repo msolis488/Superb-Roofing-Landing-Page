@@ -1,4 +1,5 @@
 import React from "react";
+import { submitLeadForm } from "@/lib/api";
 import {
   Dialog,
   DialogContent,
@@ -54,15 +55,38 @@ export default function LeadForm({
 
   const [showSuccess, setShowSuccess] = React.useState(false);
 
-  const handleSubmit = (data: FormData) => {
-    onSubmit?.(data);
-    form.reset();
-    setShowSuccess(true);
+  const handleSubmit = async (data: FormData) => {
+    console.log(
+      "%c[Form] Starting form submission...",
+      "color: purple; font-weight: bold",
+    );
+    try {
+      console.log("%c[Form] Form data:", "color: purple", data);
+      console.log("%c[Form] Calling submitLeadForm...", "color: purple");
+      const result = await submitLeadForm(data);
+      console.log(
+        "%c[Form] Form submitted successfully:",
+        "color: green",
+        result,
+      );
+      onSubmit?.(data);
+      form.reset();
+      setShowSuccess(true);
+    } catch (error) {
+      console.error("%c[Form] Form submission failed:", "color: red", error);
+      alert("Failed to submit form. Please try again.");
+    }
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[600px] bg-white">
+      <DialogContent
+        className="sm:max-w-[600px] bg-white"
+        aria-describedby="lead-form-description"
+      >
+        <div id="lead-form-description" className="sr-only">
+          Form to request a roofing quote and claim your $1,000 discount
+        </div>
         {showSuccess ? (
           <div className="py-8 text-center">
             <h3 className="text-2xl font-bold text-green-600 mb-4">

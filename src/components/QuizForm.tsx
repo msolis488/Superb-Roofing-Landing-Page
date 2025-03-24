@@ -122,11 +122,40 @@ export default function QuizForm({
     }
   };
 
-  const handleSubmit = (data: ContactFormData) => {
-    onSubmit?.({ ...data });
-    form.reset();
-    setShowContactForm(false);
-    onOpenChange?.(false);
+  const handleSubmit = async (data: ContactFormData) => {
+    try {
+      const webhookData = {
+        data: {
+          ...data,
+          quizAnswers: answers,
+        },
+        timestamp: new Date().toISOString(),
+        source: "landing-page",
+      };
+
+      const response = await fetch(
+        "https://lovemarketing.app.n8n.cloud/webhook-test/landing-page-deal",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(webhookData),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error(`Failed to submit form: ${response.status}`);
+      }
+
+      onSubmit?.(data);
+      form.reset();
+      setShowContactForm(false);
+      onOpenChange?.(false);
+    } catch (error) {
+      console.error("Failed to submit form:", error);
+      alert("Failed to submit form. Please try again.");
+    }
   };
 
   return (

@@ -17,38 +17,38 @@ const defaultImages: GalleryImage[] = [
   {
     id: "1",
     src: "https://i.ibb.co/0yhGW7Wn/expert-installation.webp",
-    alt: "Modern roof installation",
-    description: "Complete roof replacement with architectural shingles",
+    alt: "Modern Metal Roof Installation",
+    description: "Standing Seam Metal Roof",
   },
   {
     id: "2",
     src: "https://i.ibb.co/xqtVYtBy/expert-residential-roofing-services.webp",
     alt: "Classic home roof",
-    description: "Traditional asphalt shingle installation",
+    description: "Traditional architectural shingle installation",
   },
   {
     id: "3",
     src: "https://i.ibb.co/N20X3kg7/residential-roof-installation-services.webp",
     alt: "Luxury home roofing",
-    description: "Premium slate roofing project",
+    description: "Premium architectural shingle roofing project",
   },
   {
     id: "4",
     src: "https://i.ibb.co/cVnv9r9/Shingle1.webp",
-    alt: "Luxury home roofing",
-    description: "Premium slate roofing project",
+    alt: "Tradtional home roofing",
+    description: "Architectural Shingle Project",
   },
   {
     id: "5",
     src: "https://i.ibb.co/LXYpRJL8/superb-roofing-and-renovation-doing-whole-roof-repair.webp",
-    alt: "Luxury home roofing",
-    description: "Premium slate roofing project",
+    alt: "Home Under roofing construction",
+    description: "Architectural Shingle Roof Installation In New Braunfels ",
   },
   {
     id: "6",
     src: "https://i.ibb.co/Gv2vVYTS/superb-roofing-solar-panel-roof-intallation-12.webp",
-    alt: "Luxury home roofing",
-    description: "Premium slate roofing project",
+    alt: "Luxury Metal Roofing",
+    description: "Galvalume Standing Seam Metal Roof",
   },
   // Add more default images here
 ];
